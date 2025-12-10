@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBooks Employee Compensation Setup</title>
+    <!-- Third-party CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Application CSS -->
+    <link href="css/style.css?v=9" rel="stylesheet">
+    <link href="css/components.css?v=7" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <h1 class="h3 mb-3">
+                            <i class="fas fa-users text-primary"></i>
+                            QuickBooks Employee Compensation Setup
+                        </h1>
+                        <p class="text-muted">Complete the setup process to start managing employee compensation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="progress mb-3" style="height: 20px;">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 0%" id="progressBar">
+                                <span id="progressText">Step 1 of 8</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Step Indicators -->
+                        <div class="row text-center">
+                            <div class="col step-indicator" data-step="1">
+                                <div class="step-circle active" id="step1">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <small class="d-block mt-1">OAuth</small>
+                            </div>
+                            <div class="col step-indicator" data-step="2">
+                                <div class="step-circle" id="step2">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <small class="d-block mt-1">Pre-check</small>
+                            </div>
+                            <div class="col step-indicator" data-step="3">
+                                <div class="step-circle" id="step3">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <small class="d-block mt-1">Employees</small>
+                            </div>
+                            <div class="col step-indicator" data-step="4">
+                                <div class="step-circle" id="step4">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <small class="d-block mt-1">Compensation</small>
+                            </div>
+                            <div class="col step-indicator" data-step="5">
+                                <div class="step-circle" id="step5">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <small class="d-block mt-1">Projects</small>
+                            </div>
+                            <div class="col step-indicator" data-step="6">
+                                <div class="step-circle" id="step6">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <small class="d-block mt-1">Customers</small>
+                            </div>
+                            <div class="col step-indicator" data-step="7">
+                                <div class="step-circle" id="step7">
+                                    <i class="fas fa-box"></i>
+                                </div>
+                                <small class="d-block mt-1">Items</small>
+                            </div>
+                            <div class="col step-indicator" data-step="8">
+                                <div class="step-circle" id="step8">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <small class="d-block mt-1">TimeActivity</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow-sm">
+                    <div class="card-body" id="stepContent">
+                        <!-- Step content will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" id="prevBtn" disabled>
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <button type="button" class="btn btn-primary" id="nextBtn">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div class="row mt-3">
+            <div class="col-12">
+                <div id="statusMessages"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Modal -->
+    <div class="modal fade" id="loadingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 id="loadingText">Processing...</h5>
+                    <p class="text-muted" id="loadingDescription">Please wait while we complete this step.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="resultsModalTitle">Setup Complete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="resultsModalBody">
+                    <!-- Results will be displayed here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="downloadResults">
+                        <i class="fas fa-download"></i> Download Configuration
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third-party Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Global Namespace -->
+    <script>
+        // Create QB namespace
+        window.QB = {
+            initialized: false,
+            initializeServices: function() {
+                if (this.initialized) return;
+                
+                if (this.loadingManager && typeof this.loadingManager.init === 'function') {
+                    this.loadingManager.init();
+                }
+                if (this.errorBoundary && typeof this.errorBoundary.init === 'function') {
+                    this.errorBoundary.init();
+                }
+                
+                this.initialized = true;
+            }
+        };
+    </script>
+
+    <!-- Application Core -->
+    <script src="js/constants.js?v=3" onload="console.log('constants.js loaded')"></script>
+    <script src="js/event-bus.js?v=3" onload="console.log('event-bus.js loaded')"></script>
+    <script src="js/state-manager.js?v=5" onload="console.log('state-manager.js loaded')"></script>
+    <script src="js/utils.js?v=3" onload="console.log('utils.js loaded')"></script>
+    <script src="js/models.js?v=3" onload="console.log('models.js loaded')"></script>
+    <script src="js/validation.js?v=3" onload="console.log('validation.js loaded')"></script>
+    <script src="js/error-boundary.js?v=3" onload="console.log('error-boundary.js loaded')"></script>
+    <script src="js/loading-manager.js?v=3" onload="console.log('loading-manager.js loaded')"></script>
+    <script src="js/api-service.js?v=4" onload="console.log('api-service.js loaded')"></script>
+
+    <!-- UI Components -->
+    <script src="js/templates.js?v=1.0.8"></script>
+    <script src="js/setup-wizard.js?v=1.0.8" onload="console.log('setup-wizard.js loaded')"></script>
+
+    <!-- Initialize App -->
+    <script>
+        // Create QB namespace if not exists
+        window.QB = window.QB || {};
+        
+        // Initialize services function
+        QB.initializeServices = function() {
+            try {
+                console.log('Initializing services...');
+                console.log('QB namespace:', QB);
+                console.log('QB.eventBus:', QB.eventBus);
+                console.log('QB.loadingManager:', QB.loadingManager);
+                console.log('QB.errorBoundary:', QB.errorBoundary);
+                
+                // Initialize error boundary first
+                if (QB.errorBoundary && QB.errorBoundary.init) {
+                    QB.errorBoundary.init();
+                    console.log('Error boundary initialized');
+                } else {
+                    console.error('Error boundary not available');
+                }
+                
+                // Initialize loading manager
+                if (QB.loadingManager && QB.loadingManager.init) {
+                    QB.loadingManager.init();
+                    console.log('Loading manager initialized');
+                } else {
+                    console.error('Loading manager not available');
+                }
+                
+                console.log('Services initialized successfully');
+                return true;
+            } catch (error) {
+                console.error('Error initializing services:', error);
+                return false;
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded');
+            
+            // Wait for all scripts to load
+            setTimeout(() => {
+                try {
+                    console.log('Starting application initialization...');
+                    console.log('Window QB:', window.QB);
+                    
+                    // Initialize core services first
+                    const servicesInitialized = QB.initializeServices();
+                    
+                    if (!servicesInitialized) {
+                        console.error('Failed to initialize services, cannot proceed');
+                        return;
+                    }
+
+                    // Subscribe to UI events
+                    if (QB.eventBus && QB.EVENTS && QB.CONSTANTS) {
+                        QB.eventBus.subscribe(QB.EVENTS.UI_ERROR, (message) => {
+                            UIUtils.showAlert(message, QB.CONSTANTS.STATUS_TYPES.ERROR);
+                        });
+                        QB.eventBus.subscribe(QB.EVENTS.UI_SUCCESS, (message) => {
+                            UIUtils.showAlert(message, QB.CONSTANTS.STATUS_TYPES.SUCCESS);
+                        });
+                        QB.eventBus.subscribe(QB.EVENTS.UI_WARNING, (message) => {
+                            UIUtils.showAlert(message, QB.CONSTANTS.STATUS_TYPES.WARNING);
+                        });
+                        QB.eventBus.subscribe(QB.EVENTS.UI_INFO, (message) => {
+                            UIUtils.showAlert(message, QB.CONSTANTS.STATUS_TYPES.INFO);
+                        });
+                        console.log('UI event subscriptions created');
+                    } else {
+                        console.error('Required dependencies for UI events not available');
+                    }
+
+                    // Initialize setup wizard only after services are ready
+                    if (QB.stateManager && QB.SetupWizard && QB.eventBus && QB.loadingManager) {
+                        console.log('Creating SetupWizard...');
+                        window.setupWizard = new QB.SetupWizard(QB.stateManager);
+                        console.log('SetupWizard created successfully');
+                    } else {
+                        console.error('Required dependencies for SetupWizard not available:', {
+                            stateManager: !!QB.stateManager,
+                            SetupWizard: !!QB.SetupWizard,
+                            eventBus: !!QB.eventBus,
+                            loadingManager: !!QB.loadingManager
+                        });
+                    }
+                } catch (error) {
+                    console.error('Error initializing application:', error);
+                }
+            }, 100); // Small delay to ensure all scripts are loaded
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+/* Custom styles for QuickBooks Employee Compensation Setup */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Step Indicators */
+.step-indicator {
+    position: relative;
+}
+
+.step-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    border: 2px solid #e9ecef;
+}
+
+.step-circle.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+.step-circle.completed {
+    background-color: #198754;
+    color: white;
+    border-color: #198754;
+}
+
+.step-circle.error {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+}
+
+/* Step Content Styles */
+.step-content {
+    min-height: 400px;
+    padding: 20px;
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.step-header h3 {
+    color: #0d6efd;
+    margin-bottom: 10px;
+}
+
+.step-header p {
+    color: #6c757d;
+    font-size: 1.1em;
+}
+
+/* OAuth Step Styles */
+.oauth-container {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.oauth-btn {
+    background: linear-gradient(45deg, #0077c5, #00a8ff);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 119, 197, 0.3);
+}
+
+.oauth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 119, 197, 0.4);
+    color: white;
+}
+
+.oauth-status {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+}
+
+.oauth-status.success {
+    background-color: #d1edff;
+    border: 1px solid #0077c5;
+    color: #0077c5;
+}
+
+.oauth-status.error {
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+}
+
+/* Pre-check Styles */
+.precheck-item {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.precheck-item.checking {
+    border-color: #0d6efd;
+    background-color: #e7f1ff;
+}
+
+.precheck-item.success {
+    border-color: #198754;
+    background-color: #d1e7dd;
+}
+
+.precheck-item.error {
+    border-color: #dc3545;
+    background-color: #f8d7da;
+}
+
+.precheck-icon {
+    font-size: 1.5em;
+    margin-right: 15px;
+}
+
+/* Data Lists */
+.data-list {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+}
+
+.data-item {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.data-item:hover {
+    background: #e9ecef;
+    border-color: #0d6efd;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.data-item.selected {
+    background: rgba(40, 167, 69, 0.1);
+    border-color: #28a745;
+    border-width: 2px;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.data-item.selected {
+    background-color: rgba(40, 167, 69, 0.05);
+    border-left: 4px solid #28a745;
+}
+
+.data-item:last-child {
+    margin-bottom: 0;
+}
+
+.selectable-item {
+    cursor: pointer;
+}
+
+.selectable-item:hover {
+    background-color: #f8f9fa;
+    transform: translateX(2px);
+}
+
+.selectable-item.selected {
+    background-color: rgba(40, 167, 69, 0.05);
+    border-left: 4px solid #28a745;
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
+}
+
+.data-count {
+    background-color: #0d6efd;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+/* Alert Styles */
+.alert-custom {
+    border-radius: 8px;
+    border: none;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.alert-info-custom {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #1565c0;
+}
+
+.alert-success-custom {
+    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+    color: #2e7d32;
+}
+
+.alert-warning-custom {
+    background: linear-gradient(135deg, #fff3e0, #ffcc02);
+    color: #ef6c00;
+}
+
+.alert-danger-custom {
+    background: linear-gradient(135deg, #ffebee, #ffcdd2);
+    color: #c62828;
+}
+
+/* Loading Animations */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #0d6efd;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Summary Cards */
+.summary-card {
+    border-left: 4px solid #0d6efd;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+.summary-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.summary-label {
+    color: #6c757d;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .step-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9em;
+    }
+    
+    .step-indicator small {
+        font-size: 0.7em;
+    }
+    
+    .oauth-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}
+
+/* Custom scrollbar */
+.data-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.data-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.data-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.data-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Fade in animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
