@@ -36,7 +36,7 @@ Official Documentation: https://developer.intuit.com/app/developer/qbo/docs/work
 
 ```bash
 git clone <repository-url>
-cd SampleApp-EmployeeCompensation-Dotnet
+cd SampleApp-EmployeeCompensation-DotNet
 dotnet restore
 ```
 
