@@ -75,7 +75,6 @@ The application will be available at:
 The application requires these QuickBooks scopes:
 - `com.intuit.quickbooks.accounting`
 - `openid`
-- `com.intuit.quickbooks.payroll`
 - `project-management.project`
 - `payroll.compensation.read`
 
